@@ -5,5 +5,10 @@ on:
 jobs: 
   job1: 
     runs-on: ubuntu-latest
+    environment:
+      name: z
+      url: https://github.com
     steps:
-      - run: echo hello 
+      - name: test env
+        run: |
+          echo hello secrets.ENV_SECRET : ${{secrets.ENV_SECRET}}
