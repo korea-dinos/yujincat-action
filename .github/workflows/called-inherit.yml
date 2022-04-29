@@ -1,0 +1,31 @@
+name: called secrets inherit
+on:
+  workflow_call:
+    secrets:
+      mapping_test: 
+        required: false
+      yujincat_repo_secret:
+        required: false
+        
+jobs: 
+  print_secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo mapping_test: ${{ secrets.mapping_test }}
+          echo yujincat_repo_secret: ${{ secrets.yujincat_repo_secret }}
+          echo actions_yujincat_org_secret: ${{ secrets.actions_yujincat_org_secret }} 
+          echo yujincat_env_secret: ${{ secrets.yujincat_env_secret }}
+          echo non-existing: ${{ secrets.yujincat_non-existing }}
+          echo beyond_100: ${{ secrets.yujincat_pat_test }}
+  print_secrets_env:
+    runs-on: ubuntu-latest
+    environment:
+      name: yujincat
+      url: https://github.com
+    steps:
+      - run: |
+          echo mapping_test: ${{ secrets.mapping_test }}
+          echo yujincat_repo_secret: ${{ secrets.yujincat_repo_secret }}
+          echo actions_yujincat_org_secret: ${{ secrets.actions_yujincat_org_secret }} 
+          echo yujincat_env_secret: ${{ secrets.yujincat_env_secret }}
