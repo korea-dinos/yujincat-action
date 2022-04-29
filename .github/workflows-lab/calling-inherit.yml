@@ -1,0 +1,21 @@
+name: calling secrets inherit
+on:
+  workflow_dispatch:
+  
+jobs:
+#  calling the remote & public workflow outside business
+  calling_remote_public_outside_business_without_inherit:
+    uses: bbq-beets/yujincat-test-2/.github/workflows/called-inherit.yml@main
+    secrets: 
+      mapping_test: "test"
+  calling_remote_public_outside_business:
+    uses: bbq-beets/yujincat-test-2/.github/workflows/called-inherit.yml@main
+    secrets: inherit
+#   # calling the remote & public workflow in the same org
+#   calling_remote_public_same_org:
+#     uses: ./.github/workflows/inherit-called.yml
+#     secrets: inherit
+#   # calling the remote & public workflow in a different org
+#   calling_remote_public_different_org:
+#     uses: ./.github/workflows/inherit-called.yml
+#     secrets: inherit
